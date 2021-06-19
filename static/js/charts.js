@@ -187,7 +187,7 @@ function buildCharts(sample) {
     ];
     
     // 5. Create the layout for the gauge chart.
-    var gaugeLayout = { width:400, height: 325, margin: {t:0, b:0}};
+    var gaugeLayout = { width:400, height: 300, margin: {t:0, b:0}};
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
   });
