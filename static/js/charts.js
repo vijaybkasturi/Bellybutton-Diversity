@@ -1,8 +1,10 @@
 function loadAuthClient () {
+  console.log('Loading Auth Client');
   gapi.load('auth2', initGoogleAuth);
 }
 
 function initGoogleAuth (clientId = '216353090233-mc2hiucjjmlroumidovtms310kll3iek.apps.googleusercontent.com') {
+  console.log('Initialize Google Auth');
   gapi.auth2.init({
     client_id: clientId,
     scope: 'https://www.googleapis.com/auth/userinfo.email'
@@ -14,6 +16,7 @@ function initGoogleAuth (clientId = '216353090233-mc2hiucjjmlroumidovtms310kll3i
 }
 
 function signIn () {
+  console.log('Signing In');
   gapi.auth2.getAuthInstance().signIn().then(() => {
     document.getElementById('sign-in-btn').hidden = true;
     document.getElementById('sign-out-btn').hidden = false;
@@ -24,6 +27,7 @@ function signIn () {
 }
 
 function sendSampleRequest (projectId = 'testgsheetsintegration') {
+  console.log('Sending Sample Request');
   var user = gapi.auth2.getAuthInstance().currentUser.get();
   var idToken = user.getAuthResponse().id_token;
   var endpoint = `https://${projectId}.appspot.com/_ah/api/echo/v1/email`;
