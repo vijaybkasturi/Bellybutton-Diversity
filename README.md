@@ -9,7 +9,7 @@ Roza's volunteers will be able to identify whether that species is found in thei
 
 
 
-The dashboard is deployed via github pages and be accessed at https://laharikascu.github.io/Bellybutton-diversity/. The dashboard shows the demographic info for a volunteer and displays the below  charts for an interactive analysis
+The dashboard is deployed via github pages and be accessed at https://vijaybkasturi.github.io/Bellybutton-Diversity/. The dashboard shows the demographic info for a volunteer and displays the below  charts for an interactive analysis
   - Horizontal Bar chart
   - Buble Chart
   - Gauge Chart
