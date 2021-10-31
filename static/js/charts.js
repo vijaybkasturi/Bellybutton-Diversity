@@ -1,3 +1,43 @@
+function loadAuthClient () {
+  gapi.load('auth2', initGoogleAuth);
+}
+
+function initGoogleAuth (clientId = '216353090233-mc2hiucjjmlroumidovtms310kll3iek.apps.googleusercontent.com') {
+  gapi.auth2.init({
+    client_id: clientId,
+    scope: 'https://www.googleapis.com/auth/userinfo.email'
+  }).then(() => {
+    document.getElementById('sign-in-btn').disabled = false;
+  }).catch(err => {
+    console.log(err);
+  });
+}
+
+function signIn () {
+  gapi.auth2.getAuthInstance().signIn().then(() => {
+    document.getElementById('sign-in-btn').hidden = true;
+    document.getElementById('sign-out-btn').hidden = false;
+    document.getElementById('send-request-btn').disabled = false;
+  }).catch(err => {
+    console.log(err);
+  });
+}
+
+function sendSampleRequest (projectId = 'testgsheetsintegration') {
+  var user = gapi.auth2.getAuthInstance().currentUser.get();
+  var idToken = user.getAuthResponse().id_token;
+  var endpoint = `https://${projectId}.appspot.com/_ah/api/echo/v1/email`;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', endpoint + '?access_token=' + encodeURIComponent(idToken));
+  xhr.onreadystatechange = function () {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      window.alert(xhr.responseText);
+    }
+  };
+  xhr.send();
+}
+
+
 function init() {
   // Grab a reference to the dropdown select element
   var selector = d3.select("#selDataset");
